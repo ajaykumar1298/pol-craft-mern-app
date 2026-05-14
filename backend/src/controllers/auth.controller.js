@@ -46,7 +46,6 @@ async function registerUser(req, res) {
           username: newUser.username,
           email: newUser.email,
         },
-        token: token,
       },
     });
   } catch (error) {
