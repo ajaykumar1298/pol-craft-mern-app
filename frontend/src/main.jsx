@@ -1,22 +1,22 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import {
   createBrowserRouter,
   createRoutesFromChildren,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import Analytics from "./pages/Analytics.jsx";
-import PollingPage from "./pages/PollingPage.jsx";
-import ProtectedRoute from "./protectedRoutes/ProtectedRoute.jsx";
-import Register from "./pages/Register.jsx";
+import App from "./App";
+import Home from "./pages/Home";
+import AuthProtectedRoute from "./ProtectedRoutes/AuthProtectedRoute";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
+import Analytics from "./pages/Analytics";
+import PollingPage from "./pages/PollingPage";
+import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
-import AuthProtectedRoute from "./protectedRoutes/AuthProtectedRoute.jsx";
-import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromChildren(

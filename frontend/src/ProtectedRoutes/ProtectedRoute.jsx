@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { getUserDetails } from "../utils/storage";
+import { getUserDetails } from "../utils/Storage";
 
 export default function ProtectedRoute({ children }) {
   const user = getUserDetails();

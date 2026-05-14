@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getUserDetails } from "../utils/storage";
+import { getUserDetails } from "../utils/Storage";
 
 function Home() {
   const user = getUserDetails();

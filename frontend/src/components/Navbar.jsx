@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { getUserDetails, removeUserDetails } from "../utils/storage";
+import { getUserDetails, removeUserDetails } from "../utils/Storage";
 
 export default function Navbar() {
   // const [user, setUser] = useState(null);
