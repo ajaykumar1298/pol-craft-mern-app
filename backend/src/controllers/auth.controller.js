@@ -85,7 +85,7 @@ async function loginUser(req, res) {
         message: "password does not matched",
       });
     }
-    let token = jwt.sign({ id: newUser._id }, process.env.JWT_URI);
+    let token = jwt.sign({ id: user._id }, process.env.JWT_URI);
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
