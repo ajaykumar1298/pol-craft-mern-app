@@ -106,5 +106,11 @@ async function loginUser(req, res) {
     });
   }
 }
+async function logoutUser(req, res) {
+  res.clearCookie("token", { httpOnly: true, secure: true, sameSite: "none" });
+  return res
+    .status(200)
+    .json({ success: true, message: "Logged out successfully" });
+}
 
-export { registerUser, loginUser };
+export { registerUser, loginUser, logoutUser };

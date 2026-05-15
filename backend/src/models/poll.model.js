@@ -77,7 +77,7 @@ const pollSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    totalResponse: {
+    totalResponses: {
       type: Number,
       default: 0,
     },

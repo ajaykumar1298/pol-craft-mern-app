@@ -29,7 +29,7 @@ async function createPoll(req, res) {
 
 async function getPollBySlug(req, res) {
   try {
-    const poll = await pollModel.findOne({ slug: req.param.slug });
+    const poll = await pollModel.findOne({ slug: req.params.slug });
     if (!poll) {
       return res.status(404).json({
         success: false,
@@ -55,7 +55,7 @@ async function getPollBySlug(req, res) {
 
 async function publishResult(req, res) {
   try {
-    const poll = await pollModel.findOne(req.params?.is);
+    const poll = await pollModel.findById(req.params?.id);
     if (!poll) {
       return res.status(404).json({
         success: false,
@@ -66,7 +66,7 @@ async function publishResult(req, res) {
     await poll.save();
 
     return res.status(200).json({
-      success: false,
+      success: true,
       message: "result publish",
     });
   } catch (error) {
@@ -81,6 +81,11 @@ async function getAnalytics(req, res) {
   try {
     const pollId = req.params.id;
     const poll = await pollModel.findById(pollId);
+    if (!poll) {
+      return res
+        .status(404)
+        .json({ success: false, message: "poll not found" });
+    }
     const responses = await responseModel.find({ pollId });
     const analytics = poll.questions.map((q) => {
       const options = q.options.map((opt) => {
@@ -124,4 +129,17 @@ async function getAnalytics(req, res) {
   }
 }
 
-export { createPoll, getPollBySlug, publishResult, getAnalytics };
+async function getMyPolls(req, res) {
+  try {
+    const polls = await pollModel
+      .find({ createdBy: req.user._id })
+      .sort({ createdAt: -1 });
+    return res
+      .status(200)
+      .json({ success: true, message: "polls fetched successfully", polls });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+export { createPoll, getPollBySlug, publishResult, getAnalytics, getMyPolls };

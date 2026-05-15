@@ -4,4 +4,7 @@ export const initSocket = (server) => {
   io = server;
 };
 
-export { io };
+export const getIO = () => {
+  if (!io) throw new Error("Socket.io not initialized yet");
+  return io;
+};
